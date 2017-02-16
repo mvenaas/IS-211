@@ -75,22 +75,31 @@ public class CompactingGC extends Heap
 
 
     private void mark(int block) {
-        // copy from 1a
+      if (block != NULL) {
+        this.setFlag(REACHABLE, block);
+        mark(this.getPtr1(block));
+        mark(this.getPtr2(block));
+      }
     }
 
-
+    // Find the location for living objects
     private int calculateAddresses() {
-        // opg 2a
+        // Pseudo:
+        var free,live = start
+        if live do set obj.forward = current then count++(size)
+
     }
 
 
     private void updatePointers() {
-        //opg 2b//
+        // Pseudo:
+        for every live set pointer to updated live pointer
     }
 
 
     private void moveObjects() {
-        // opg 2c
+        // Pseudo:
+        for every live object move()
     }
 
 
