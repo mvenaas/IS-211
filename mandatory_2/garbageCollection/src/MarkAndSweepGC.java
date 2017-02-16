@@ -129,12 +129,25 @@ public class MarkAndSweepGC extends Heap
 
 
     private void mark(int block) {
-        // oppgave 1 a
+      if (block != NULL) {
+        this.setFlag(REACHABLE, block);
+        mark(this.getPtr1(block));
+        mark(this.getPtr2(block));
+      }
     }
 
 
     private void sweep() {
-        //oppgave 1b
+      private void sweep() {
+        int address = 0;
+        while (addr < HEAP_SIZE) {
+
+            if (this.getFlag(address) == GARBAGE) {
+              this.addToFreeList(address, getSize(address));
+            }
+            address = address + this.getSize(address);
+        }
+      }
     }
 
 
