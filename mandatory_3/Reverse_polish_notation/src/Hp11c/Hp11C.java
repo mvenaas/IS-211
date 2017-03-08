@@ -11,26 +11,29 @@ package Hp11c;
  *
  * @author mvenaas
  */
+
+import java.util.Stack;
+
 public class Hp11C {
 
-    private Hp11cListStack<Float> stack;
     private Hp11cEngine engine;
     private Hp11cGui gui;
-
-    private float currentNumber = 0;
-
+    private Integer currentNumber = 0;
+    private Stack stack = new Stack<Integer>();
 
 
     public Hp11C() {
         engine = new Hp11cEngine() {
+
             @Override
             public void numberPressed(int number) {
+                // Does not need to validate input because it is hardcoded in Gui
                 currentNumber = number;
             }
 
             @Override
             public void pointPressed() {
-                // TODO: Decimal point operator
+                // TODO: Decimal point operator/operand
             }
 
             @Override
@@ -45,12 +48,25 @@ public class Hp11C {
 
             @Override
             public void plusPressed() {
+                Integer one = (Integer) stack.pop();
+                Integer two = (Integer) stack.pop();
+
+                int result = one + two;
+                stack.push(result);
+
+                currentNumber = result;
 
             }
 
             @Override
             public void minusPressed() {
+                Integer one = (Integer) stack.pop();
+                Integer two = (Integer) stack.pop();
 
+                int result = one + two;
+                stack.push(result);
+
+                currentNumber = result;
             }
 
             @Override
@@ -65,12 +81,13 @@ public class Hp11C {
 
             @Override
             public void enterPressed() {
-
+                stack.push(currentNumber);
+                System.out.println(currentNumber);
             }
 
             @Override
             public String getAuthor() {
-                return "Mvenaas";
+                return "Built by Mvenaas";
             }
 
             // Make sure to return string
