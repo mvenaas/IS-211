@@ -5,14 +5,19 @@
  */
 package Hp11c;
 
+
+
 /**
  *
- * @author evenal
+ * @author mvenaas
  */
 public class Hp11C {
 
+    private Hp11cListStack<Float> stack;
     private Hp11cEngine engine;
     private Hp11cGui gui;
+
+    private float currentNumber = 0;
 
 
 
@@ -20,12 +25,12 @@ public class Hp11C {
         engine = new Hp11cEngine() {
             @Override
             public void numberPressed(int number) {
-
+                currentNumber = number;
             }
 
             @Override
             public void pointPressed() {
-
+                // TODO: Decimal point operator
             }
 
             @Override
@@ -65,17 +70,18 @@ public class Hp11C {
 
             @Override
             public String getAuthor() {
-                return null;
+                return "Mvenaas";
             }
 
+            // Make sure to return string
             @Override
             public String getDisplayValue() {
-                return null;
+                return "" + currentNumber;
             }
 
             @Override
             public String getTitle() {
-                return null;
+                return "HP c11 Simulator";
             }
 
             @Override
