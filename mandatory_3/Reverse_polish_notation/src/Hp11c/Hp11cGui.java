@@ -91,6 +91,8 @@ public class Hp11cGui {
         status = new JLabel(calc.getAuthor());
         contentPane.add(status, BorderLayout.SOUTH);
 
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
         frame.pack();
     }
 

@@ -43,7 +43,8 @@ public class Hp11C {
 
             @Override
             public void clearPressed() {
-
+                stack = new Stack<Integer>();
+                currentNumber = 0;
             }
 
             @Override
@@ -63,7 +64,7 @@ public class Hp11C {
                 Integer one = (Integer) stack.pop();
                 Integer two = (Integer) stack.pop();
 
-                int result = one + two;
+                int result = one - two;
                 stack.push(result);
 
                 currentNumber = result;
@@ -71,12 +72,24 @@ public class Hp11C {
 
             @Override
             public void multiplyPressed() {
+                Integer one = (Integer) stack.pop();
+                Integer two = (Integer) stack.pop();
 
+                int result = one * two;
+                stack.push(result);
+
+                currentNumber = result;
             }
 
             @Override
             public void dividePressed() {
+                Integer one = (Integer) stack.pop();
+                Integer two = (Integer) stack.pop();
 
+                int result = one / two;
+                stack.push(result);
+
+                currentNumber = result;
             }
 
             @Override
@@ -87,7 +100,7 @@ public class Hp11C {
 
             @Override
             public String getAuthor() {
-                return "Built by Mvenaas";
+                return "Built, partly, by Mvenaas";
             }
 
             // Make sure to return string
