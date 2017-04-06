@@ -38,7 +38,7 @@ public class Hp11C {
 
             @Override
             public void chsPressed() {
-
+discord
             }
 
             @Override
